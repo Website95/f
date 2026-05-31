@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière Atelier | Преміальний простір краси</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c5a059;
+            --bg: #fcfbf9;
+            --text: #333;
+            --white: #ffffff;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        /* Navbar */
+        nav { position: fixed; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; z-index: 1000; transition: 0.3s; }
+        nav.scrolled { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+
+        /* Hero */
+        .hero { height: 100vh; background: url('USER_IMAGE_1') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); position: relative; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-family: var(--font-heading); font-size: 4rem; opacity: 0; transform: translateY(30px); transition: 1s; }
+        .hero p { font-size: 1.2rem; margin: 20px 0; opacity: 0; transform: translateY(30px); transition: 1s 0.2s; }
+        .btn { display: inline-block; padding: 15px 30px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        .btn:hover { background: var(--accent); color: var(--white); }
+
+        /* General Sections */
+        section { padding: 80px 50px; }
+        h2 { font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-bottom: 50px; color: var(--primary); }
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .service-card { padding: 30px; background: var(--white); border: 1px solid #eee; text-align: center; transition: 0.3s; }
+        .service-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+
+        /* Footer */
+        footer { background: var(--primary); color: var(--white); padding: 50px; text-align: center; }
+        
+        .fade-in { opacity: 0; transform: translateY(50px); transition: 1s; }
+        .fade-in.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<nav id="nav">
+    <div class="logo">LUMIÈRE ATELIER</div>
+    <div>Меню</div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1 id="hero-title">Мистецтво вашого образу</h1>
+        <p>Відкрийте для себе нову концепцію догляду за волоссям</p>
+        <a href="#booking" class="btn">Записатися</a>
+        <a href="#services" class="btn">Послуги</a>
+    </div>
+</header>
+
+<section id="services">
+    <h2>Наші послуги</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>Італійський боб</h3>
+            <p>Бездоганна стрижка з ефектом легкої недбалості.</p>
+            <p><strong>1200 грн | 60 хв</strong></p>
+        </div>
+        <div class="service-card">
+            <h3>Скульптурний догляд</h3>
+            <p>Відновлення структури волосся за авторською методикою.</p>
+            <p><strong>1500 грн | 45 хв</strong></p>
+        </div>
+        <!-- Add more cards -->
+    </div>
+</section>
+
+<script>
+    window.addEventListener('scroll', () => {
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            if(el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+        });
+    });
+    
+    // Simple load trigger
+    setTimeout(() => {
+        document.getElementById('hero-title').style.opacity = 1;
+        document.getElementById('hero-title').style.transform = 'translateY(0)';
+    }, 100);
+</script>
+</body>
+</html>
